@@ -1,3 +1,4 @@
+import { ParameterStatusMessage } from './../node_modules/pg-protocol/src/messages';
 import express, { type Application, type Request, type Response } from "express"
 import { Pool } from "pg"
 
@@ -96,7 +97,7 @@ app.get('/api/users/:id', async (req: Request, res: Response) => {
       `, [id])
     // console.log(result)
     if (result.rows.length === 0) {
-      res.status(500).json({
+      res.status(404).json({
         success: false,
         message: 'User Not Found!',
         data: {}
@@ -105,6 +106,39 @@ app.get('/api/users/:id', async (req: Request, res: Response) => {
     res.status(200).json({
       success: true,
       message: 'User Retrived Successfully',
+      data: result.rows[0]
+    })
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      error: error
+    })
+  }
+})
+
+// put method
+app.put('/api/users/:id', async (req: Request, res: Response) => {
+  const { id } = req.params
+  const { name, password, age, is_active } = req.body
+  // console.log("ID: ", id)
+  // console.log(name, password, age, is_active)
+  try {
+    const result = await pool.query(`
+    UPDATE users SET name=$1,password=$2,age=$3,is_active=$4
+    WHERE id=$5 RETURNING *
+    `, [name, password, age, is_active, id])
+
+    if (result.rows.length === 0) {
+      res.status(404).json({
+        success: false,
+        message: 'User Not Found!'
+      })
+    }
+    // console.log(result)
+    res.status(200).json({
+      success: true,
+      message: 'User updated successfully',
       data: result.rows[0]
     })
   } catch (error: any) {
