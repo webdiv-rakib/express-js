@@ -1,9 +1,17 @@
 import express, { type Application, type Request, type Response } from "express"
+import {Pool} from "pg"
+
 const app: Application = express()
 const port = 5000
 
 // use middler for post method.
 app.use(express.json())
+app.use(express.text())
+app.use(express.urlencoded({ extended: true }))
+
+const pool = new Pool({
+  connectionString:'postgresql://neondb_owner:npg_C1oh6gTAGzRn@ep-twilight-dew-aog6yrcd-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+})
 
 // get method
 app.get('/', (req: Request, res: Response) => {
@@ -13,7 +21,14 @@ app.get('/', (req: Request, res: Response) => {
 
 // post method
 app.post('/', async (req: Request, res: Response) => {
-  console.log(req.body)
+  // console.log(req.body)
+  const { name, email, passowrd } = req.body;
+  res.status(201).json({
+    message: "Created",
+    data: {
+      name, email
+    },
+  })
 })
 
 app.listen(port, () => {
