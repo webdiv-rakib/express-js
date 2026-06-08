@@ -36,14 +36,13 @@ const initDB = async () => {
 }
 initDB();
 
-// get method
 app.get('/', (req: Request, res: Response) => {
   // res.send('Express Server')
   res.status(200).json({ 'message': 'Express Server', 'author': 'Next Level' })
 });
 
 // post method
-app.post('/', async (req: Request, res: Response) => {
+app.post('/api/users', async (req: Request, res: Response) => {
   // console.log(req.body)
   const { name, email, password, age } = req.body;
 
@@ -54,13 +53,65 @@ app.post('/', async (req: Request, res: Response) => {
     `, [name, email, password, age])
     // console.log(result)
     res.status(201).json({
+      success: true,
       message: "User Created Successfully!",
       data: result.rows[0],
     })
   } catch (error: any) {
     res.status(500).json({
+      success: false,
       message: error.message,
       error: error,
+    })
+  }
+})
+
+// get method (to get all the data at a time)
+app.get('/api/users', async (req: Request, res: Response) => {
+  try {
+    const result = await pool.query(`
+      SELECT * FROM users
+      `)
+    res.status(200).json({
+      success: true,
+      message: 'User Retrived Successfully',
+      data: result.rows
+    })
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      error: error
+    })
+  }
+})
+
+// get method (specific id matched data shows)
+app.get('/api/users/:id', async (req: Request, res: Response) => {
+  const { id } = req.params
+  try {
+    const result = await pool.query(`
+      SELECT * FROM users
+      WHERE id = $1
+      `, [id])
+    // console.log(result)
+    if (result.rows.length === 0) {
+      res.status(500).json({
+        success: false,
+        message: 'User Not Found!',
+        data: {}
+      })
+    }
+    res.status(200).json({
+      success: true,
+      message: 'User Retrived Successfully',
+      data: result.rows[0]
+    })
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      error: error
     })
   }
 })
