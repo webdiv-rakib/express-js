@@ -1,4 +1,3 @@
-import { ParameterStatusMessage } from './../node_modules/pg-protocol/src/messages';
 import express, { type Application, type Request, type Response } from "express"
 import { Pool } from "pg"
 
