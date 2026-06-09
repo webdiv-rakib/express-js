@@ -1,9 +1,9 @@
 import express, { type Application, type Request, type Response } from "express"
 import { Pool } from "pg"
+import config from "./config"
 
 const app: Application = express()
-const port = 5000
-
+const port = config.port
 // use middler for post method.
 app.use(express.json())
 app.use(express.text())
@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }))
 
 // connection between project and neon database
 const pool = new Pool({
-  connectionString: 'postgresql://neondb_owner:npg_C1oh6gTAGzRn@ep-twilight-dew-aog6yrcd-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+  connectionString: config.connection_String
 })
 
 const initDB = async () => {
