@@ -1,5 +1,6 @@
 import express, { type Application, type Request, type Response } from "express"
 import { pool } from "./db"
+import { userRoute } from "./modules/user/user.route"
 
 const app: Application = express()
 // export const port = config.port
@@ -13,30 +14,7 @@ app.get('/', (req: Request, res: Response) => {
   res.status(200).json({ 'message': 'Express Server', 'author': 'Next Level' })
 });
 
-// post method
-app.post('/api/users', async (req: Request, res: Response) => {
-  // console.log(req.body)
-  const { name, email, password, age } = req.body;
-
-  try {
-    const result = await pool.query(`
-    INSERT INTO users(name,email,password,age) VALUES($1,$2,$3,$4)
-    RETURNING *
-    `, [name, email, password, age])
-    // console.log(result)
-    res.status(201).json({
-      success: true,
-      message: "User Created Successfully!",
-      data: result.rows[0],
-    })
-  } catch (error: any) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-      error: error,
-    })
-  }
-})
+app.use('/api/users',userRoute)
 
 // get method (to get all the data at a time)
 app.get('/api/users', async (req: Request, res: Response) => {
