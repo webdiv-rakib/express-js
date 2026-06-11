@@ -1,6 +1,7 @@
 import express, { type Application, type Request, type Response } from "express"
 import { userRoute } from "./modules/user/user.route"
 import { profileRoute } from "./modules/profile/profile.route"
+import { authRoute } from "./modules/auth/auth.route";
 
 const app: Application = express();
 // export const port = config.port
@@ -11,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/users', userRoute);
 app.use('/api/profile', profileRoute);
+app.use('/api/auth', authRoute)
 
 app.get('/', (req: Request, res: Response) => {
   // res.send('Express Server')
