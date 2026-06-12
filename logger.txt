@@ -18,3 +18,211 @@ Time -> 1781267187149
 URL -> /api/users/1
 
   
+  
+Method -> GET 
+  
+Time -> 1781269219859
+  
+URL -> /api/users/2
+
+  
+  
+Method -> GET 
+  
+Time -> 1781269661593
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781269698644
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781269732984
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781269750508
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781269778622
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781269796165
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781269825824
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781269826390
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781269836498
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781269840005
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781270237860
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781274676626
+  
+URL -> /
+
+  
+  
+Method -> GET 
+  
+Time -> 1781274676770
+  
+URL -> /favicon.ico
+
+  
+  
+Method -> GET 
+  
+Time -> 1781274684277
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781274996535
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781275409035
+  
+URL -> /api/users
+
+  
+  
+Method -> POST 
+  
+Time -> 1781275472955
+  
+URL -> /api/auth/login
+
+  
+  
+Method -> GET 
+  
+Time -> 1781275610777
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781275652390
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781275967670
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781276225974
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781276259916
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781276321454
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781277114704
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1781277119878
+  
+URL -> /api/users
+
+  
