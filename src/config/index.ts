@@ -8,6 +8,6 @@ const config = {
     connection_String: process.env.CONNECTIONSTRING as string,
     port: process.env.PORT,
     secret: process.env.JWT_SECRET
-}
+};
 
 export default config;
