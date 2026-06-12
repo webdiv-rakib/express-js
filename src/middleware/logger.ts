@@ -10,7 +10,7 @@ const logger = (req: Request, res: Response, next: NextFunction) => {
   `;
     //to  write log 
     fs.appendFile('logger.txt', log, (error) => {
-        console.log(error)
+        
     })
     next();
 };

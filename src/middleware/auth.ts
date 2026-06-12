@@ -5,40 +5,52 @@ import { pool } from "../db";
 
 const auth = () => {
     return async (req: Request, res: Response, next: NextFunction) => {
-        // console.log('This is Protected Route')
-        // console.log(req.headers.authorization)
-        const token = req.headers.authorization;
-        console.log(token)
-        if (!token) {
-            res.status(401).json({
-                success: false,
-                message: 'Unauthorized Access!',
-            });
-        };
+        try {
+            // console.log('This is Protected Route')
+            // console.log(req.headers.authorization)
 
-        const decoded = jwt.verify(token as string, config.secret as string) as JwtPayload;
-        // console.log(decoded);
+            // 1. check if the token exists
+            const token = req.headers.authorization;
+            console.log(token)
+            if (!token) {
+                res.status(401).json({
+                    success: false,
+                    message: 'Unauthorized Access!',
+                });
+            };
 
-        const userData = await pool.query(`
+            // 2. verify the token
+            const decoded = jwt.verify(token as string, config.secret as string) as JwtPayload;
+            // console.log(decoded);
+
+            // 3. find the user into database
+            const userData = await pool.query(`
             SELECT * FROM users WHERE email = $1
             `, [decoded.email]);
-        // console.log(userData)
-        const user = userData.rows[0];
-        // console.log(user)
-        if (userData.rows.length === 0) {
-            res.status(404).json({
-                success: false,
-                message: 'User Not Found',
-            });
-        };
+            // console.log(userData)
+            const user = userData.rows[0];
+            // console.log(user)
 
-        if (!user.is_active) {
-            res.status(403).json({
-                success: false,
-                message: 'Forbidden',
-            });
-        };
-        next();
+            // 4.if the user active or not
+            if (userData.rows.length === 0) {
+                res.status(404).json({
+                    success: false,
+                    message: 'User Not Found',
+                });
+            };
+
+            if (!user.is_active) {
+                res.status(403).json({
+                    success: false,
+                    message: 'Forbidden',
+                });
+            };
+
+            req.user = decoded
+            next();
+        } catch (error) {
+            next(error)
+        }
     }
 }
 export default auth;
