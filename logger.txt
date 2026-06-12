@@ -1,0 +1,20 @@
+
+  Method -> GET 
+  Time -> 1781267072742
+  URL -> /
+  
+  
+Method -> GET 
+  
+Time -> 1781267157587
+  
+URL -> /api/users
+  
+  
+Method -> GET 
+  
+Time -> 1781267187149
+  
+URL -> /api/users/1
+
+  
