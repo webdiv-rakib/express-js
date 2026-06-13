@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import { pool } from "../../db";
-import jwt from "jsonwebtoken"
+import jwt, { type JwtPayload } from "jsonwebtoken"
 import config from "../../config";
 const loginUserIntoDB = async (payload: { email: string, password: string }) => {
     const { email, password } = payload;
@@ -24,16 +24,47 @@ const loginUserIntoDB = async (payload: { email: string, password: string }) => 
     const jwtpayload = {
         id: user.id,
         name: user.name,
-        role:user.role,
+        role: user.role,
         is_active: user.is_active,
         email: user.email
     }
     // access token
-    const accessToken = jwt.sign(jwtpayload, config.secret as string, { expiresIn: '1d' });
+    const accessToken = jwt.sign(jwtpayload, config.secret as string, { expiresIn: config.expiresIn as any });
     // refresh token
-    const refreshToken = jwt.sign(jwtpayload, config.refresh_token as string, { expiresIn: '1d' });
-    return { accessToken,refreshToken };
+    const refreshToken = jwt.sign(jwtpayload, config.refresh_token as string, { expiresIn: config.expiresIn as any });
+    return { accessToken, refreshToken };
 };
+
+const generateRefreshToken = async (token: string) => {
+    if (!token) {
+        throw new Error("Unauthorized")
+    };
+    const decoded = jwt.verify(token as string, config.refresh_token as string) as JwtPayload;
+    const userData = await pool.query(`
+            SELECT * FROM users WHERE email = $1
+            `, [decoded.email]);
+    const user = userData.rows[0];
+
+    if (userData.rows.length === 0) {
+        throw new Error("User Not Found")
+    };
+
+    if (!user.is_active) {
+        throw new Error("Forbidden")
+    };
+    // 3.generate token
+    const jwtpayload = {
+        id: user.id,
+        name: user.name,
+        role: user.role,
+        is_active: user.is_active,
+        email: user.email
+    }
+    // access token
+    const accessToken = jwt.sign(jwtpayload, config.secret as string, { expiresIn: config.expiresIn as any });
+    return { accessToken }
+}
 export const authService = {
-    loginUserIntoDB
+    loginUserIntoDB,
+    generateRefreshToken
 }
