@@ -2,16 +2,18 @@ import type { NextFunction, Request, Response } from "express";
 import jwt, { type JwtPayload } from "jsonwebtoken"
 import config from "../config";
 import { pool } from "../db";
+import type { ROLES } from "../types";
 
-const auth = () => {
+const auth = (...roles: ROLES[]) => {
     return async (req: Request, res: Response, next: NextFunction) => {
+        // console.log(roles);
         try {
             // console.log('This is Protected Route')
             // console.log(req.headers.authorization)
 
             // 1. check if the token exists
             const token = req.headers.authorization;
-            console.log(token)
+            // console.log(token)
             if (!token) {
                 res.status(401).json({
                     success: false,
@@ -46,6 +48,15 @@ const auth = () => {
                 });
             };
 
+            // console.log("Auth Role: ", user.role);
+            // roles = ['admin','agent']
+            // user.role = 'admin' | 'user' | 'agent'
+            if (roles.length && !roles.includes(user.role)) {
+                res.status(403).json({
+                    success: false,
+                    message: 'Forbidden!, This role has no access',
+                });
+            }
             req.user = decoded
             next();
         } catch (error) {
