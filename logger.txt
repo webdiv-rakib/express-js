@@ -826,3 +826,35 @@ Time -> 1782303941994
 URL -> /api/users
 
   
+  
+Method -> GET 
+  
+Time -> 1782304225519
+  
+URL -> /
+
+  
+  
+Method -> GET 
+  
+Time -> 1782304226959
+  
+URL -> /favicon.ico
+
+  
+  
+Method -> GET 
+  
+Time -> 1782304235104
+  
+URL -> /api/users
+
+  
+  
+Method -> GET 
+  
+Time -> 1782304236051
+  
+URL -> /api/users
+
+  
