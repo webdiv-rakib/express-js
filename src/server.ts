@@ -12,3 +12,4 @@ const main = () => {
 main();
 //nothing to worry 
 // i will finish my assignment on time 
+//  i feel sooooo lazy
