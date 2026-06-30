@@ -10,4 +10,3 @@ const main = () => {
 };
 
 main();
-//removed other comments
