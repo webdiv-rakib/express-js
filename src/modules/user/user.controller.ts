@@ -130,11 +130,3 @@ export const userController = {
   updateUser,
   deleteUser
 }
-
-// assignment comelete
-// another requirment incomplete is to record related video about the assignment.
-// busy with doing some useless shits
-// just submitted assignment-2
-// now i will start on next mission
-// i must submit assignment 3 on time
-// personal github streak 372 days
