@@ -130,4 +130,4 @@ export const userController = {
   updateUser,
   deleteUser
 }
-
+// 14-1 ALTER Table & Constraints
