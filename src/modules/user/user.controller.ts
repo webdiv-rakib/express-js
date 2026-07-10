@@ -134,3 +134,4 @@ export const userController = {
 // 14-3 SELECT Basics: Sorting & Aliases
 // 14-4 DISTINCT & WHERE Filtering
 // 14-5 Filtering with AND & OR
+// 14-6 Comparison, BETWEEN & IN
