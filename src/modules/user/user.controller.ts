@@ -137,3 +137,4 @@ export const userController = {
 // 14-6 Comparison, BETWEEN & IN
 // wasting time busy with doing shit
 // now start coding
+// lazy to do anything
