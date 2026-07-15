@@ -131,3 +131,4 @@ export const userController = {
   deleteUser
 }
 // 15-3 Updating Data
+// 15-4 Deleting Data
