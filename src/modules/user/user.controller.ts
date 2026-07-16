@@ -135,3 +135,4 @@ export const userController = {
 // 15-5 GROUP BY Explained
 // 15-6 GROUP BY With HAVING
 // 15-9 Understanding Inner Join
+/// join practice
