@@ -130,3 +130,4 @@ export const userController = {
   updateUser,
   deleteUser
 }
+// 16-1 Practice SQL with Mentor - Part 1
