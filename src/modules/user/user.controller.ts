@@ -130,11 +130,3 @@ export const userController = {
   updateUser,
   deleteUser
 }
-// 15-3 Updating Data
-// 15-4 Deleting Data
-// 15-5 GROUP BY Explained
-// 15-6 GROUP BY With HAVING
-// 15-9 Understanding Inner Join
-/// join practice
-// doing nothing.
-// practice task
