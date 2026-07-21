@@ -130,12 +130,3 @@ export const userController = {
   updateUser,
   deleteUser
 }
-
-// we lost the world cup
-// just a comment.
-// working on assignment -3
-// thanks to my floor mate.
-// birthday finished.
-// working
-// learning.
-// wasting time
