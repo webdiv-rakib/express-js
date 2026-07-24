@@ -134,3 +134,4 @@ export const userController = {
 // finished recording first video
 // finished edition first video.
 // have to finish recording 3rd video.
+// lazy
