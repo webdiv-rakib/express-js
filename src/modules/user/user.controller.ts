@@ -130,15 +130,3 @@ export const userController = {
   updateUser,
   deleteUser
 }
-// have to record assignment video
-// finished recording first video
-// finished edition first video.
-// have to finish recording 3rd video.
-// lazy
-// getting lazy day by day
-// i will finish recording today
-// i have recorded my third video 
-// now i will edit the video
-// going no where
-// 5th commit of the day
-// i dont know anything
