@@ -130,10 +130,3 @@ export const userController = {
   updateUser,
   deleteUser
 }
-// work with nothing
-// starting module 18
-// prisma eco system
-// 18-5 How Prisma Works Under The Hood
-// have to finish today module.
-// doing nothing just playing games
-// have to finish todays module.
