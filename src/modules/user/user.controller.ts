@@ -130,3 +130,4 @@ export const userController = {
   updateUser,
   deleteUser
 }
+// 18-6 Prisma Learning Roadmap And Exploring The Documentations
