@@ -131,3 +131,4 @@ export const userController = {
   deleteUser
 }
 // 18-6 Prisma Learning Roadmap And Exploring The Documentations
+// 18-7 Setting Up Prisma And DB Connection
