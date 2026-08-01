@@ -133,3 +133,4 @@ export const userController = {
 // 18-6 Prisma Learning Roadmap And Exploring The Documentations
 // 18-7 Setting Up Prisma And DB Connection
 // will finish today module
+// enough back in track now
